@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portfolio • Miiaz</title>
+<link rel="stylesheet" href="./assets/css/style_v2.css">
+<style>.page{max-width:1000px;margin:60px auto;padding:0 20px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.cardx{background:linear-gradient(180deg,var(--panel),#0c0f14);border:1px solid var(--line);border-radius:16px;padding:18px}
+.cardx h3{margin:0 0 6px}
+.meta-mini{color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header class="sitebar">
+  <a href="./index.html" class="brand">
+  <img src="./assets/LogoMI.png" alt="Miiaz logo" class="logo logo--small">
+  </a>
+  <nav class="site-nav">
+    <a class="active" href="/portfolio.html">Portfolio</a>
+    <a href="/resume.html">Résumé</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+
+</nav>
+</header>
+
+
+<main class="page">
+<h1>Featured Projects</h1>
+<div class="grid">
+<article class="cardx">
+  <h3>PLA-Pigeon</h3>
+  <p>A 3D-printed, shatter-resistant sporting clay refined through iterative design for improved geometry, durability, and stable flight.</p>
+  <div class="card-actions">
+    <a class="btn" href="./portfolio/pla-pigeon.html">See More</a>
+  </div>
+  <p class="meta-mini">Stack: Onshape • OrcaSlicer • PLA+</p>
+</article>
+<article class="cardx">
+  <h3>AIDE V1 — Offline Voice Assistant - W.I.P</h3>
+  <p>Raspberry Pi 5 + local LLM, sprite UI, emotion system, and Coqui TTS. Designed for fully-offline, personality-driven interaction.</p>
+  <div class="card-actions">
+    <a class="btn" href="/portfolio/AIDE.html">Coming Soon!</a>
+  </div>
+  <p class="meta-mini">Stack: Python • Kivy • Coqui TTS • Phi-3/3.5 • RPi5</p>
+</article>
+<article class="cardx">
+  <h3>Media Display Controller</h3>
+  <p>Pi Zero 2W signage player using yt-dlp and systemd services for unattended loops.</p>
+  <div class="card-actions">
+    <a class="btn" href="https://github.com/Miiazz/MDC">See More</a>
+  </div>
+  <p class="meta-mini">Stack: Bash • systemd • Raspberry Pi OS • yt-dlp</p>
+</article>
+</div>
+</main>
+
+
+<footer class="sitefoot">© 2025 Miiaz</footer>
+</body>
+</html>
