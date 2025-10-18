@@ -1,0 +1,318 @@
+/* ========== Miiaz v2 — centered splash ========== */
+/* Palette & tokens */
+:root {
+  --bg: #111;       /* from original */
+  --ink: #eee;      /* from original */
+  --muted: #ccc;    /* from original */
+  --panel: #0f1216; /* slightly lighter than #111 for depth */
+  --line: #333;     /* from original */
+  --brand: #7ec9f5; /* from original */
+  --brand-2: #54b0ee;
+  --radius: 18px;
+  --shadow: 0 16px 48px rgba(0,0,0,.35);
+  --maxw: 820px;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', ui-sans-serif, system-ui, -apple-system, "Inter", Roboto, Arial, "Noto Sans", sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+
+/* Stage: centers the single card */
+.stage {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background:
+    radial-gradient(1200px 800px at 10% -10%, #151823 0%, transparent 55%),
+    radial-gradient(900px 600px at 90% 110%, #121621 0%, transparent 55%),
+    var(--bg);
+}
+
+/* Card container */
+.card {
+  width: 100%;
+  max-width: var(--maxw);
+  background: linear-gradient(180deg, var(--panel), #0c0f14);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 34px;
+  text-align: center;
+}
+
+/* Logo image styling */
+.logo{
+  display:block;
+  margin:0 auto 14px;
+  width:128px;      /* tweak size here */
+  height:auto;
+  border-radius:12px;
+}
+
+.logo.is-light{
+  filter: invert(1) brightness(1.4) contrast(1.05);
+}
+
+.logo--small {
+  width: 96px;
+  height: auto;
+  margin: 0;
+  filter: invert(1) brightness(1.4) contrast(1.05);
+}
+
+
+
+/* Headings & tagline (mapped to original .tagline/.subline vibe) */
+h1 {
+  margin: 4px 0 6px;
+  font-size: clamp(28px, 6vw, 48px);
+  line-height: 1.15;
+}
+.tag {
+  color: var(--muted);
+  font-size: clamp(16px, 2.8vw, 20px);
+  letter-spacing: 0.2px;
+}
+.tag-sub {
+  display:block;
+  margin-top:6px;
+  color: var(--muted);
+  font-size: clamp(13px, 2vw, 16px);
+  font-weight: 400;
+}
+
+/* Link grid */
+.links {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Buttons echo old nav button style but modernized */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--brand);
+  color: var(--brand);
+  font-weight: 700;
+  font-size: 1rem;
+  background: #222;                  /* from original header/nav */
+  transition:
+    background-color .15s ease,
+    color .15s ease,
+    transform .15s ease,
+    box-shadow .15s ease,
+    border-color .15s ease;
+}
+.btn:hover {
+  color: #fff;
+  background-color: var(--brand);
+  border-color: var(--brand);
+  text-decoration: none;             /* mirrors old :hover underline intent with a bolder change */
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(126,201,245,.25);
+}
+
+/* Secondary link row (keeps clean lines) */
+.meta {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: var(--muted);
+  margin-top: 18px;
+  font-weight: 600;
+}
+.meta a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: #222;
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.meta a:hover {
+  border-color: var(--brand);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(126,201,245,.18);
+}
+.dot {
+  width: 4px; height: 4px; background: var(--line); border-radius: 999px; align-self: center;
+}
+
+/* Footer (minimal, reflects original) */
+.sitefoot {
+  margin-top: 18px;
+  color: #aaa;
+  font-size: .9rem;
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;
+}
+
+
+/* Focus states for accessibility */
+a:focus-visible, .btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .btn, .meta a { transition: none; }
+  .btn:hover, .meta a:hover { transform: none; box-shadow: none; }
+}
+
+
+/*Portfolio Landing Page*/ 
+.sitebar {
+  display: flex;
+  flex-direction: column;   /* stack logo over buttons */
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in oklab, #0b0c10 85%, transparent);
+}
+
+.sitebar .brand {
+  display: block;
+}
+
+.site-nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+  transition: .2s ease;
+}
+
+.site-nav a:hover {
+  border-color: color-mix(in oklab, var(--brand) 60%, var(--line));
+  color: var(--ink);
+}
+
+.site-nav a.active {
+  border-color: var(--brand);
+  color: var(--ink);
+  box-shadow: 0 6px 18px rgba(84,176,238,.15);
+}
+
+/* --- Project Pages --- */
+.page {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.crumb {
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+.crumb a {
+  color: var(--ink);
+}
+
+.cardx {
+  background: #0c0f14;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  margin-top: 16px;
+}
+
+.meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: grid;
+  gap: 6px;
+}
+
+.meta-list li strong {
+  min-width: 80px;
+  display: inline-block;
+}
+
+.pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 2px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.file-list {
+  display: grid;
+  gap: 10px;
+}
+
+.file {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+  background: linear-gradient(180deg, var(--panel), #0c0f14);
+}
+
+.pdfwrap {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0c0f14;
+  margin-top: 12px;
+}
+
+.pdfwrap object {
+  width: 100%;
+  height: 70vh;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .pdfwrap object {
+    height: 60vh;
+  }
+}
+
