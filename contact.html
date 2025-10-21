@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact • Miiaz</title>
+  <meta name="description" content="Get in touch with Michael Iazzetti — Engineering Technology (mechanical, embedded, cybersecurity). Email, LinkedIn, GitHub." />
+  <link rel="stylesheet" href="./assets/css/style_v2.css">
+</head>
+<body>
+  <main class="page">
+    <div class="crumb"><a href="/">Home</a> / Contact</div>
+
+    <section class="cardx" aria-label="Contact Michael">
+      <h1>Contact</h1>
+      <p>Best way to reach me is by email. I’m also active on LinkedIn and keep my GitHub up to date with current projects.</p>
+
+      <!-- Direct contact -->
+      <h2>Direct</h2>
+      <ul class="meta-list">
+        <li>
+          <strong>Email:</strong>
+          <span id="email"></span>
+          <button id="copy-email" class="pill" type="button" aria-label="Copy email">Copy</button>
+        </li>
+        <li>
+          <strong>Location:</strong> Daytona Beach, FL (USA)
+        </li>
+        <li>
+          <strong>Résumé:</strong>
+          <a class="pill" href="/cv" rel="noopener">View CV</a>
+          <a class="pill" href="/resume.pdf" rel="noopener">Download PDF</a>
+        </li>
+      </ul>
+
+      <!-- Social / profiles -->
+      <h2 style="margin-top:18px;">Profiles</h2>
+      <div class="meta" aria-label="Profiles">
+        <a href="https://github.com/Miiazz" rel="me noopener">GitHub</a>
+        <span class="dot"></span>
+        <a href="https://www.linkedin.com/in/michael-iazzetti" rel="me noopener">LinkedIn</a>
+      </div>
+
+      <!-- Simple mailto form (no backend) -->
+      <div class="pdfwrap" style="margin-top:18px; padding:16px; border-radius:12px; border: 1px solid var(--line);">
+        <h2 style="margin-top:0;">Quick Message</h2>
+        <p style="color:var(--muted); margin-top:-6px;">This opens your email client — no data is stored on the site.</p>
+        <form id="contact-form" method="post" enctype="text/plain">
+          <div style="display:grid; gap:10px;">
+            <label>
+              <span style="display:block; margin-bottom:4px;">Your Name</span>
+              <input name="name" type="text" required
+                     style="width:100%; padding:10px; border-radius:10px; border:1px solid var(--line); background:#0c0f14; color:var(--ink);">
+            </label>
+            <label>
+              <span style="display:block; margin-bottom:4px;">Your Email</span>
+              <input name="email" type="email" required
+                     style="width:100%; padding:10px; border-radius:10px; border:1px solid var(--line); background:#0c0f14; color:var(--ink);">
+            </label>
+            <label>
+              <span style="display:block; margin-bottom:4px;">Message</span>
+              <textarea name="message" rows="5" required
+                        style="width:100%; padding:10px; border-radius:10px; border:1px solid var(--line); background:#0c0f14; color:var(--ink); resize:vertical;"></textarea>
+            </label>
+            <button class="btn" id="open-email" type="submit" style="justify-self:start;">Open in Email</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- JS to hide email from scrapers -->
+  <script>
+    const user = "michaeliazzetti";
+    const domain = "pm.me";
+    const full = `${user}@${domain}`;
+    const el = document.getElementById("email");
+    const copyBtn = document.getElementById("copy-email");
+
+    // Display clickable link
+    el.innerHTML = `<a href="mailto:${full}">${full}</a>`;
+
+    // Copy to clipboard
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(full);
+        copyBtn.textContent = "Copied!";
+        setTimeout(() => copyBtn.textContent = "Copy", 1600);
+      } catch {
+        copyBtn.textContent = "Press Ctrl+C";
+        setTimeout(() => copyBtn.textContent = "Copy", 1600);
+      }
+    });
+
+    // Update form action dynamically
+    document.getElementById("contact-form").setAttribute("action", `mailto:${full}`);
+  </script>
+</body>
+</html>
