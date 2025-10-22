@@ -316,3 +316,24 @@ a:focus-visible, .btn:focus-visible {
   }
 }
 
+/* Compact button variant for inline actions (Copy, CV, etc.) */
+.btn-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--brand);
+  color: var(--brand);
+  background: #222;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, box-shadow .15s ease;
+}
+
+.btn-small:hover {
+  color: #fff;
+  background-color: var(--brand);
+  box-shadow: 0 6px 16px rgba(126,201,245,.25);
+}
