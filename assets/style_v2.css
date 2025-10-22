@@ -316,24 +316,42 @@ a:focus-visible, .btn:focus-visible {
   }
 }
 
-/* Compact button variant for inline actions (Copy, CV, etc.) */
+/* Smaller inline button variant (Copy, Resume, etc.) */
 .btn-small {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;
-  font-size: 0.9rem;
-  border-radius: 10px;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
   border: 1px solid var(--brand);
   color: var(--brand);
-  background: #222;
   font-weight: 600;
+  font-size: 0.9rem;
+  background: #222;
+  transition:
+    background-color .15s ease,
+    color .15s ease,
+    transform .15s ease,
+    box-shadow .15s ease,
+    border-color .15s ease;
   cursor: pointer;
-  transition: background-color .15s ease, color .15s ease, box-shadow .15s ease;
+  text-decoration: none;
 }
 
+/* Match .btn hover style but smaller lift */
 .btn-small:hover {
   color: #fff;
   background-color: var(--brand);
-  box-shadow: 0 6px 16px rgba(126,201,245,.25);
+  border-color: var(--brand);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(126,201,245,.22);
+}
+
+/* Remove browser default button look */
+button.btn-small {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #222;
+  font-family: inherit;
 }
