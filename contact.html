@@ -5,9 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact • Miiaz</title>
   <meta name="description" content="Get in touch with Michael Iazzetti — Engineering Technology (mechanical, embedded, cybersecurity). Email, LinkedIn, GitHub." />
-  <link rel="stylesheet" href="./assets/css/style_v2.css">
+  <link rel="stylesheet" href="/assets/css/style_v2.css">
 </head>
 <body>
+  <header class="sitebar">
+    <a href="/" class="brand">
+      <img src="/assets/LogoMI.png" alt="Miiaz logo" class="logo logo--small">
+    </a>
+    <nav class="site-nav">
+      <a href="/portfolio.html">Portfolio</a>
+      <a href="/resume.html">Résumé</a>
+      <a href="/about.html">About</a>
+      <a class="active" href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
   <main class="page">
     <div class="crumb"><a href="/">Home</a> / Contact</div>
 
@@ -15,13 +27,12 @@
       <h1>Contact</h1>
       <p>Best way to reach me is by email. I’m also active on LinkedIn and keep my GitHub up to date with current projects.</p>
 
-      <!-- Direct contact -->
       <h2>Direct</h2>
       <ul class="meta-list">
         <li>
           <strong>Email:</strong>
           <span id="email" aria-live="polite">[loading…]</span>
-          <button id="copy-email" class="btn-small" type="button" aria-label="Copy email">Copy</button>
+          <button id="copy-email" class="btn-small" type="button">Copy</button>
         </li>
         <li>
           <strong>Location:</strong> Daytona Beach, FL (USA)
@@ -32,7 +43,6 @@
         </li>
       </ul>
 
-      <!-- Profiles -->
       <h2 style="margin-top:18px;">Profiles</h2>
       <div class="meta" aria-label="Profiles">
         <a href="https://github.com/Miiazz" rel="me noopener">GitHub</a>
@@ -40,7 +50,6 @@
         <a href="https://www.linkedin.com/in/michael-iazzetti" rel="me noopener">LinkedIn</a>
       </div>
 
-      <!-- Quick message (mailto-based, no backend) -->
       <div class="pdfwrap" style="margin-top:18px; padding:16px; border-radius:12px; border: 1px solid var(--line);">
         <h2 style="margin-top:0;">Quick Message</h2>
         <p style="color:var(--muted); margin-top:-6px;">Opens your email client — no data is stored on this site.</p>
@@ -69,20 +78,16 @@
     </section>
   </main>
 
-  <!-- JS: email obfuscation + clipboard + mailto composer -->
   <script>
-    // --- Obfuscated email (keeps it out of static HTML) ---
-    // Encoded "michaeliazzetti@pm.me" split and reversed to frustrate basic scrapers
-    const parts = ["em.", "mp@", "ittezzai", "leahcim"]; // reversed chunks
+    // Obfuscated "michaeliazzetti@pm.me"
+    const parts = ["em.", "mp@", "ittezzai", "leahcim"];
     const full = parts.map(s => s.split("").reverse().join("")).reverse().join("");
 
     const el = document.getElementById("email");
     const copyBtn = document.getElementById("copy-email");
 
-    // Render clickable link
     el.innerHTML = `<a href="mailto:${full}">${full}</a>`;
 
-    // Copy to clipboard
     copyBtn.addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText(full);
@@ -94,24 +99,19 @@
       }
     });
 
-    // Mailto composer for the quick form
     document.getElementById("contact-form").addEventListener("submit", (e) => {
       e.preventDefault();
       const fd = new FormData(e.currentTarget);
-      const name = fd.get("name")?.toString().trim() || "";
-      const from = fd.get("email")?.toString().trim() || "";
-      const msg  = fd.get("message")?.toString().trim() || "";
+      const name = (fd.get("name") || "").toString().trim();
+      const from = (fd.get("email") || "").toString().trim();
+      const msg  = (fd.get("message") || "").toString().trim();
 
       const subject = encodeURIComponent(`[miiaz.xyz] Message from ${name}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${from}\n\n${msg}\n\n— Sent via miiaz.xyz`
-      );
-
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${from}\n\n${msg}\n\n— Sent via miiaz.xyz`);
       window.location.href = `mailto:${full}?subject=${subject}&body=${body}`;
     });
   </script>
 
-  <!-- Fallback for no-JS: still shows a safe email hint -->
   <noscript>
     <p style="color:#aaa; text-align:center; margin-top:12px;">
       Enable JavaScript to reveal the email or use LinkedIn/GitHub above.
@@ -119,4 +119,3 @@
   </noscript>
 </body>
 </html>
-<!--Made the last version a tad too overcomplicated --> 
