@@ -20,7 +20,7 @@
       <ul class="meta-list">
         <li>
           <strong>Email:</strong>
-          <span id="email"></span>
+          <span id="email" aria-live="polite">[loading…]</span>
           <button id="copy-email" class="pill" type="button" aria-label="Copy email">Copy</button>
         </li>
         <li>
@@ -29,11 +29,11 @@
         <li>
           <strong>Résumé:</strong>
           <a class="pill" href="/cv" rel="noopener">View CV</a>
-          <a class="pill" href="/resume.pdf" rel="noopener">Download PDF</a>
+          <a class="pill" href="/resume.pdf" download rel="noopener">Download PDF</a>
         </li>
       </ul>
 
-      <!-- Social / profiles -->
+      <!-- Profiles -->
       <h2 style="margin-top:18px;">Profiles</h2>
       <div class="meta" aria-label="Profiles">
         <a href="https://github.com/Miiazz" rel="me noopener">GitHub</a>
@@ -41,11 +41,12 @@
         <a href="https://www.linkedin.com/in/michael-iazzetti" rel="me noopener">LinkedIn</a>
       </div>
 
-      <!-- Simple mailto form (no backend) -->
+      <!-- Quick message (mailto-based, no backend) -->
       <div class="pdfwrap" style="margin-top:18px; padding:16px; border-radius:12px; border: 1px solid var(--line);">
         <h2 style="margin-top:0;">Quick Message</h2>
-        <p style="color:var(--muted); margin-top:-6px;">This opens your email client — no data is stored on the site.</p>
-        <form id="contact-form" method="post" enctype="text/plain">
+        <p style="color:var(--muted); margin-top:-6px;">Opens your email client — no data is stored on this site.</p>
+
+        <form id="contact-form">
           <div style="display:grid; gap:10px;">
             <label>
               <span style="display:block; margin-bottom:4px;">Your Name</span>
@@ -69,15 +70,17 @@
     </section>
   </main>
 
-  <!-- JS to hide email from scrapers -->
+  <!-- JS: email obfuscation + clipboard + mailto composer -->
   <script>
-    const user = "michaeliazzetti";
-    const domain = "pm.me";
-    const full = `${user}@${domain}`;
+    // --- Obfuscated email (keeps it out of static HTML) ---
+    // Encoded "michaeliazzetti@pm.me" split and reversed to frustrate basic scrapers
+    const parts = ["em.", "mp@", "ittezzai", "leahcim"]; // reversed chunks
+    const full = parts.map(s => s.split("").reverse().join("")).reverse().join("");
+
     const el = document.getElementById("email");
     const copyBtn = document.getElementById("copy-email");
 
-    // Display clickable link
+    // Render clickable link
     el.innerHTML = `<a href="mailto:${full}">${full}</a>`;
 
     // Copy to clipboard
@@ -92,8 +95,29 @@
       }
     });
 
-    // Update form action dynamically
-    document.getElementById("contact-form").setAttribute("action", `mailto:${full}`);
+    // Mailto composer for the quick form
+    document.getElementById("contact-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.currentTarget);
+      const name = fd.get("name")?.toString().trim() || "";
+      const from = fd.get("email")?.toString().trim() || "";
+      const msg  = fd.get("message")?.toString().trim() || "";
+
+      const subject = encodeURIComponent(`[miiaz.xyz] Message from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${from}\n\n${msg}\n\n— Sent via miiaz.xyz`
+      );
+
+      window.location.href = `mailto:${full}?subject=${subject}&body=${body}`;
+    });
   </script>
+
+  <!-- Fallback for no-JS: still shows a safe email hint -->
+  <noscript>
+    <p style="color:#aaa; text-align:center; margin-top:12px;">
+      Enable JavaScript to reveal the email or use LinkedIn/GitHub above.
+    </p>
+  </noscript>
 </body>
 </html>
+<!--Made the last version a tad too overcomplicated --> 
