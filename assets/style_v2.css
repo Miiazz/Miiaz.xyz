@@ -1,4 +1,6 @@
 /* ========== Miiaz v2 — centered splash ========== */
+/* Ik this is a mess rn my b*/
+
 /* Palette & tokens */
 :root {
   --bg: #111;       /* from original */
@@ -354,4 +356,24 @@ button.btn-small {
   appearance: none;
   background: #222;
   font-family: inherit;
+}
+
+/* Freelance / misc gallery tweaks */
+.gallery .shot {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #050608;
+}
+
+.gallery .shot img {
+  width: 100%;
+  display: block;
+}
+
+.gallery .shot figcaption {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
 }
