@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ESPion V1 • Portfolio • Miiaz</title>
+  <link rel="stylesheet" href="../assets/css/style_v2.css">
+</head>
+
+<body>
+  <header class="sitebar">
+  <a href="../index.html" class="brand">
+    <img src="../assets/LogoMI.png" alt="Miiaz logo" class="logo logo--small">
+  </a>
+
+  <nav class="site-nav">
+    <a href="../index.html">Home</a>
+    <a class="active" href="../portfolio.html">Portfolio</a>
+    <a href="../resume.html">Résumé</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+  </header>
+
+  <main class="page">
+    <div class="crumb">
+      <a href="/">Home</a> / 
+      <a href="/portfolio.html">Portfolio</a> / 
+      <strong>ESPion V1</strong>
+    </div>
+
+    <h1>ESPion V1</h1>
+
+    <!-- Drawing Packet -->
+    <section class="cardx">
+      <h2>V1 Drawing Packet</h2>
+      <p>
+        Early prototype drawings done using Onshape for the ESPion V1 enclosure, showing the ESP32/e-ink
+        housing, keyboard assembly, battery housing, and full exploded assembly.
+      </p>
+
+      <div class="pdfwrap">
+        <object data="../assets/ESPion_Prototype_Drawing_Packet.pdf#view=FitH"
+                type="application/pdf">
+          <p>
+            PDF preview not supported in this browser.
+            <a class="btn" href="../assets/ESPion_V1_Drawing_Packet.pdf">Download PDF</a>
+          </p>
+        </object>
+      </div>
+    </section>
+
+    <!-- Description / Overview / Notes if added later -->
+    <section class="cardx">
+      <h2>Overview</h2>
+      <p>
+        ESPion V1 is a compact ESP32-based e-ink note and utility device built as a hands-on
+        embedded systems project. The design combines an Adafruit ESP32 Feather V2, a 2.13&quot;
+        e-ink FeatherWing, an M5Stack CardKB keyboard, local SD-backed storage, and a custom
+        3D-printable PETG enclosure.
+      </p>
+
+      <p>
+        The purpose of this first revision is to create a stable hardware and firmware foundation
+        while developing practical experience in embedded C/C++, hardware integration, CAD,
+        enclosure design, and iterative prototyping.
+      </p>
+
+      <div>
+        <span class="pill">ESP32</span>
+        <span class="pill">E-Ink</span>
+        <span class="pill">CardKB</span>
+        <span class="pill">SD Storage</span>
+        <span class="pill">PETG</span>
+        <span class="pill">Embedded Systems</span>
+      </div>
+    </section>
+
+    <!-- Project Scope -->
+    <section class="cardx">
+      <h2>V1 Scope</h2>
+      <p>
+        The first version serves as a proof of concept device and is scoped as such. Version One is set to be a 
+		small keyboard-driven note and utility device rather than a full cyberdeck or wireless multitool. 
+		Core goals include reliable display output, keyboard input, SD card storage, battery-powered 
+		operation, and a usable enclosure. Should Version One be sucessful the scope will expand upon the inital framework.
+      </p>
+
+      <ul class="meta-list">
+        <li><strong>MCU:</strong> Adafruit ESP32 Feather V2</li>
+        <li><strong>Display:</strong> 2.13&quot; e-ink FeatherWing</li>
+        <li><strong>Input:</strong> M5Stack CardKB</li>
+        <li><strong>Storage:</strong> SD card via FeatherWing</li>
+        <li><strong>Power:</strong> 3.7V lithium polymer battery</li>
+        <li><strong>Housing:</strong> Custom PETG enclosure</li>
+      </ul>
+    </section>
+
+    <!--  Prototyping -->
+    <section class="cardx">
+      <h2>Mechanical Prototyping</h2>
+      <p>
+        The current V1 work focuses on packaging the core electronics into a compact handheld form.
+        The enclosure drawings define the display and ESP32 housing, keyboard stack-up, battery
+        compartment, wire-routing paths, mounting posts, friction-fit joinery, and access for the
+        USB-C interface.
+      </p>
+
+      <p>
+        These drawings represent early prototype documentation and are expected to evolve after
+        print testing, tolerance checks, and hardware fitment validation.
+      </p>
+    </section>
+
+    <!-- Gallery -->
+    <section class="cardx">
+      <h2>Gallery</h2>
+
+      <div class="gallery">
+        <figure class="shot">
+          <img src="../assets/espion_full_assy_exploded_view.png" 
+               alt="ESPion V1 full exploded assembly drawing">
+          <figcaption>
+            Full exploded assembly showing the major ESPion V1 components and enclosure stack-up.
+          </figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="../assets/espion_esp32_eink_housing.png" 
+               alt="ESPion ESP32 and e-ink housing drawing">
+          <figcaption>
+            ESP32 and e-ink housing layout with mounting posts, USB-C access, and wire-management space.
+          </figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="../assets/espion_keyboard_battery_housing.png" 
+               alt="ESPion keyboard and battery housing drawing">
+          <figcaption>
+            Keyboard and battery housing assembly showing the CardKB interface and enclosure stack-up.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Next Steps -->
+    <section class="cardx">
+      <h2>Next Steps</h2>
+      <ul>
+        <li>Print and test-fit the V1 housing components.</li>
+        <li>Validate ESP32, e-ink display, keyboard, and battery clearances.</li>
+        <li>Revise initial tolerances and joinery based on physical fitment, then expand the enclosure to include additional components such as an inline power switch.</li>
+        <li>Begin firmware bring-up for display output, keyboard input, and SD storage.</li>
+        <li>Develop a basic menu system and short-note save/load functionality.</li>
+      </ul>
+    </section>
+
+    <!-- Navigation -->
+    <section style="margin-top:16px;display:flex;gap:10px;justify-content:space-between" class="cardx">
+      <a href="../portfolio.html">← Back to Portfolio</a>
+    </section>
+  </main>
+
+  <footer class="sitefoot">© 2026 Miiaz</footer>
+</body>
+</html>
